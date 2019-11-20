@@ -1,0 +1,140 @@
+@import '../../style/variables.scss';
+
+.galleryFilter {
+  width: 100%;
+
+  h3 {
+    padding-bottom: $padS;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    li {
+      text-transform: uppercase;
+      margin-right: $padS;
+      margin-bottom: $padS;
+    }
+  }
+
+  form {
+    padding: $padS;
+  }
+
+  fieldset {
+    border: none;
+
+    label {
+      display: flex;
+
+      input {
+        margin-right: $padS;
+        align-self: center;
+      }
+    }
+  }
+}
+
+// Base Colors
+$white: #fff;
+$black: #000;
+$gray: #333;
+$puple: #b95ed5;
+$pink: #f79494;
+//
+// Text Colors
+$font-white: $white;
+$font-black: $black;
+$font-gray: $gray;
+$font-puple: $puple;
+$font-pink: $pink;
+//
+// Background Colors
+$background-white: $white;
+$background-black: $black;
+$background-gray: $gray;
+$background-puple: $puple;
+$background-pink: $pink;
+//
+// Border Colors
+$border-white: $white;
+$border-black: $black;
+$border-gray: $gray;
+$border-pink: $pink;
+
+.toggle {
+  display: flex;
+  position: relative;
+
+  span {
+    margin: 0 20px 0 10px;
+  }
+
+  input {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+  }
+
+  input[type='checkbox'] {
+    opacity: 0;
+  }
+
+
+  input[type='checkbox'] + label {
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: relative;
+    margin: auto;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    text-indent: -999px;
+    overflow: hidden;
+    border: 1px solid $border-white;
+    cursor: pointer;
+  }
+
+  input[type='checkbox'].checkbox + label {
+    border: 1px solid $border-white;
+    background: transparent;
+  }
+
+  input[type='checkbox'].checkbox + label:before,
+  input[type='checkbox'].checkbox + label:after {
+    content: '';
+    width: 16px;
+    height: 2px;
+    border-radius: 2px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;
+    background: transparent;
+    opacity: 0;
+    transform: rotate(0);
+    transition: all 0.4s ease-in-out;
+  }
+
+
+  input[type='checkbox'].checkbox + .open:before {
+    background: $background-white;
+    opacity: 1;
+    transform: rotate(-45deg);
+  }
+
+  input[type='checkbox'].checkbox + .open:after {
+    background: $background-white;
+    opacity: 1;
+    transform: rotate(45deg);
+  }
+
+}

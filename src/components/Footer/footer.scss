@@ -1,0 +1,27 @@
+@import '../../style/variables.scss';
+
+.footer {
+  width: 100%;
+  height: auto;
+  padding: $padM;
+  border-bottom: 1px solid $white;
+  height: 69px;
+  transition: all 500ms ease-in-out;
+  .links {
+    padding: $padS;
+    a {
+      text-decoration: none;
+      text-transform: uppercase;
+
+      &:first-of-type {
+        margin-right: $padS;
+      }
+    }
+  }
+
+  &.hide {
+    height: 0px;
+    overflow: hidden;
+    opacity: 0;
+  }
+}

@@ -1,0 +1,9 @@
+@import '../../style/variables.scss';
+
+.datenschutz {
+  padding: $padM;
+
+  h1, h2, h3 {
+    padding: $padS 0;
+  }
+}

@@ -1,0 +1,59 @@
+@import "../../style/variables.scss";
+
+.kontakt {
+  padding: $padS;
+  width: 100%;
+
+  form {
+    #name, #email {
+      font-size: 18px;
+    }
+
+    label {
+      display: block;
+      width: 100%;
+      text-transform: uppercase;
+      padding-top: $padS;
+      padding-bottom: $padS;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      margin-bottom: $padM;
+      font-family: 'Dosis', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    padding: $padS;
+    }
+
+    textarea {
+      display: block;
+      width: 100%;
+      margin-bottom: $padM;
+      font-size: 18px;
+      font-family: 'Dosis', 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    padding: $padS;
+    }
+
+    input[type=submit] {
+      display: inline;
+      background-color: $primary;
+      border: none;
+      color: $white;
+      text-transform: uppercase;
+      font-size: 18px;
+    }
+  }
+
+}
+
+@media only screen and (min-width: $breakpoint) {
+  .kontakt {
+    display: block;
+    max-width: $breakpoint;
+    margin: 0 auto;
+  }
+}

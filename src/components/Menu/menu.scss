@@ -1,0 +1,49 @@
+@import "../../style/variables.scss";
+
+nav {
+  position: fixed;
+  z-index: 3;
+  padding-top: 147px;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+
+  &.open {
+    pointer-events: all;
+  }
+
+  ul {
+    list-style-type: none;
+    display: inline-block;
+  }
+
+  li {
+    position: relative;
+    // margin-bottom: $padS;
+    display: block;
+    padding-left: $padS;
+
+    div {
+      display: inline-block;
+    }
+
+    &:not(:last-of-type) {
+      div {
+        border-bottom: 1px solid $primary;
+      }
+
+    }
+
+    a {
+      padding: $padS $padS $padS 0;
+      font-weight: 600;
+      font-size: 26px;
+      display: block;
+      color: $primary;
+      text-decoration: none;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+  }
+}

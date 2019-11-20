@@ -1,0 +1,214 @@
+@import "../../style/variables.scss";
+
+.burgerWrap {
+  display: block;
+}
+
+.burger {
+  width: 30px;
+  height: 23px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+.burger div {
+  display: flex;
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  height: 10%;
+  width: 100%;
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+.burger div:nth-child(1) {
+  top: 0;
+}
+
+.burger div:nth-child(2) {
+  left: 0;
+}
+
+.burger div:nth-child(3) {
+  bottom: 0;
+}
+
+.burger div span {
+  background: $white;
+  transform-origin: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 9px;
+  opacity: 1;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-in-out;
+  -o-transition: 0.25s ease-in-out;
+  transition: 0.25s ease-in-out;
+}
+
+.burger.open {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.burger.open div:nth-child(1) span {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.burger.open div:nth-child(3) span {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.burger.open div:nth-child(1) {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.burger.open div:nth-child(3) {
+  // top: -50%;
+  -webkit-transform: translateY(50%);
+  -moz-transform: translateY(50%);
+  -o-transform: translateY(50%);
+  transform: translateY(50%);
+  bottom: 50%;
+}
+
+.burger.open div:nth-child(2) span {
+  width: 0%;
+}
+
+.burger.open div:nth-child(2) {
+  left: 25%;
+  width: 0%;
+}
+
+
+
+.galleryBurger {
+  width: 30px;
+  height: 23px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+
+.galleryBurger div {
+  display: flex;
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  height: 10%;
+  width: 100%;
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+
+.galleryBurger div:nth-child(1) {
+  top: 0;
+}
+
+.galleryBurger div:nth-child(2) {
+  display: none;
+  left: 0;
+}
+
+.galleryBurger div:nth-child(3) {
+  bottom: 0;
+}
+
+.galleryBurger div span {
+  background: $white;
+  transform-origin: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 9px;
+  opacity: 1;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.galleryBurger.open {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+.galleryBurger.open div:nth-child(1) span {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.galleryBurger.open div:nth-child(3) span {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.galleryBurger.open div:nth-child(1) {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.galleryBurger.open div:nth-child(3) {
+  // top: -50%;
+  -webkit-transform: translateY(50%);
+  -moz-transform: translateY(50%);
+  -o-transform: translateY(50%);
+  transform: translateY(50%);
+  bottom: 50%;
+}
+
+.galleryBurger.open div:nth-child(2) span {
+  width: 0%;
+}
+
+.galleryBurger.open div:nth-child(2) {
+  left: 25%;
+  width: 0%;
+}

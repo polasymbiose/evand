@@ -1,0 +1,108 @@
+@import '../../style/variables.scss';
+
+.fullGallery {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 600ms;
+
+  &.open {
+    pointer-events: all;
+    z-index: 100;
+    opacity: 1;
+  }
+
+  .closeGallery {
+    position: absolute;
+    z-index: 11;
+    right: $padL;
+    top: 100px;
+  }
+
+  .galleryImg {
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    top: 10%;
+    left: 0;
+    // transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    will-change: transform, opacity;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: center;
+  }
+
+  .galleryArrows {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    bottom: $padM;
+    width: 100%;
+    padding: $padM;
+
+    div {
+      cursor: pointer;
+      font-size: 4rem;
+      padding: $padS;
+    }
+  }
+}
+
+.awssld {
+  --content-background-color: transparent;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+
+}
+
+.awssld__startUp {
+  background-color: transparent;
+}
+
+.awssld__controls__arrow-right {
+  transform: translate(0);
+  opacity: 1;
+
+  &:before {
+    transform-origin: 100% 100% 0;
+    top: -50%;
+    transform: rotate(-25deg);
+  }
+
+  &:after {
+    transform-origin: 100% 0% 0;
+    top: 50%;
+    transform: rotate(25deg);
+  }
+
+  &.awssld__controls__arrow-right--active {
+    opacity: 0;
+
+    &:before {
+      transform-origin: 100% 100% 0;
+      top: -50%;
+      transform: rotate(-25deg) translate3d(50%, 0, 0) !important;
+    }
+
+    &:after {
+      transform-origin: 100% 0% 0;
+      top: 50%;
+      transform: rotate(25deg) translate3d(50%, 0, 0) !important;
+    }
+  }
+}

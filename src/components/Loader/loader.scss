@@ -1,0 +1,94 @@
+@import '../../style/variables.scss';
+
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  overflow: hidden;
+  transition: opacity 800ms;
+  pointer-events: none;
+  opacity: 0;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.4);
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .loader-logo {
+    width: 150px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 12;
+  }
+}
+
+
+.loadernew {
+  display: block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #242424;
+  animation: spin 1.7s linear infinite;
+  z-index: 11;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #3b3b3b;
+    animation: spin-reverse 1.2s linear infinite;
+    opacity: 0.8;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #919191;
+    animation: spin 1s linear infinite;
+    opacity: 0.8;
+  }
+}
+
+// Bourbon mixins
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}

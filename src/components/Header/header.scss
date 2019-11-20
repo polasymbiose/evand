@@ -1,0 +1,60 @@
+@import '../../style/variables.scss';
+
+header {
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  z-index: 2;
+  background-color: $blackLight;
+  height: 56px;
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+
+  .header {
+    display: flex;
+    position: relative;
+    flex: 1 1 auto;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    padding: $padS $padS $padS $padS;
+  }
+
+  .logo {
+    display: flex;
+    height: 33px;
+
+    img {
+      height: 100%;
+      width: auto;
+      display: block;
+    }
+
+    a {
+      display: block;
+      color: $black;
+      height: 100%;
+    }
+  }
+
+  &.hide {
+    height: 0px;
+    overflow: hidden;
+    opacity: 0;
+  }
+}
+
+@media only screen and (min-width: $breakpoint) {
+  header {
+    height: 47px;
+  }
+  .logo {
+    display: inline-block;
+    height: 130%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
