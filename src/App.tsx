@@ -83,10 +83,11 @@ const App = () => {
               <Route
                 render={({ location }) => {
                   const { pathname } = location
+                  const foo = pathname.split('/')
                   return (
                     <TransitionGroup>
                       <CSSTransition
-                        key={pathname}
+                        key={foo[1]}
                         classNames="page"
                         onEnter={onEnter}
                         timeout={{

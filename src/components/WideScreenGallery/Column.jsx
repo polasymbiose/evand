@@ -1,7 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { useTransition, animated } from 'react-spring'
-import { useInView, InView } from 'react-intersection-observer'
-import {debounce} from "lodash";
+import React, { useRef, useCallback } from 'react'
+import { animated, useTransition } from 'react-spring'
 import './Column.scss'
 const padS = 24
 
@@ -31,10 +29,14 @@ const Column = ({ column, handleClick, colIndex }) => {
   return (
     <>
       {transitions.map(({ item, props: { ...rest }, key }) => {
+        const name = key
+          .split('/')
+          .pop()
+          .replace('.jpg', '')
         return (
           <div className='listItem' key={`${key}-${item.index}-colIndex${colIndex}`} style={{ width: item.width }}>
             <animated.div
-              onClick={handleClick(item.index, animating.current)}
+              onClick={handleClick(item.index, animating.current, name)}
               src={item.thumb}
               style={{ backgroundImage: `url(${item.thumb})`, backgroundRepeat: 'no-repeat', ...rest }}
             />
@@ -53,7 +55,6 @@ const Column = ({ column, handleClick, colIndex }) => {
 //   const [vis, setvis] = useState(false);
 //   const mounted = useRef(false)
 //   const image = useRef(new Image())
-
 
 //   const handleInview = (a, b) => {
 //     if (a) {

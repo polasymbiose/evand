@@ -1,12 +1,14 @@
 import shuffle from 'lodash/shuffle'
 import React, { useEffect, useRef, useState } from 'react'
 import useKeyboard from '../../hooks/useKeyboard'
+import { useHistory } from 'react-router-dom'
 import useMedia from '../../hooks/useMedia'
 import Column from './Column'
 import Loader from '../Loader/Loader'
 import './WideScreenGallery.scss'
 
 const WideScreenGallery = ({ imgs, render }) => {
+  const history = useHistory()
   const columns = useMedia(['(min-width: 1500px)', '(min-width: 1000px)', '(min-width: 600px)'], [5, 3, 3], 2)
   const [items, set] = useState(imgs)
   const [controls, setControls] = useState({
@@ -53,7 +55,8 @@ const WideScreenGallery = ({ imgs, render }) => {
     return { ...child, index: i, column: currentColumn }
   })
 
-  const handleClick = (index, animating) => () => {
+  const handleClick = (index, animating, name) => () => {
+    history.push(`/gallery/${name}`)
     animating &&
       setControls({
         index,

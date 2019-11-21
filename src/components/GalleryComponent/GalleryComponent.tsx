@@ -5,6 +5,7 @@ import Page from '../Page/Page';
 import '../Page/page-transition.scss';
 import WideScreenGallery from '../WideScreenGallery/WideScreenGallery';
 import './GalleryComponent.scss';
+import { Route } from 'react-router-dom';
 
 export interface Images {
   src: string
@@ -28,4 +29,5 @@ const GalleryComponent = () => {
     </Page>
   )
 }
-export default GalleryComponent
+
+export default React.memo(GalleryComponent)
