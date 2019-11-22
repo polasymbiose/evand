@@ -1,34 +1,36 @@
 import * as React from 'react'
-import { Link } from 'react-router-dom'
+// @ts-ignore
+import { Link, useLocation } from 'react-router-dom'
 import logo from '../../assets/img/logo/Logo-weiss.png'
-import useOpenGallery from '../../hooks/useOpenGallery'
 import Burger from '../Burger/Burger'
 import './header.scss'
+
 const cn = require('classnames')
 
-const Header = (props: {
-  open: boolean,
-  toggle: () => void
-}) => {
-    const openGallery = useOpenGallery()
+const Header = (props: { open: boolean; toggle: () => void }) => {
+  const location = useLocation()
+  const { pathname } = location
+  const pathSplit = pathname.split('/')
+  const hide = pathSplit.length > 2 && pathSplit[2] !== ''
 
-    const cx = cn({
-      hide: openGallery
-    })
-    return (
-      <header className={cx}>
-        <div className="header">
-          <div>
-            <Burger toggle={props.toggle} open={props.open} />
-          </div>
-          <div className="logo">
-            <Link to="/">
-              <img src={logo} alt="evand-logo"/>
-            </Link>
-          </div>
+  const cx = cn({
+    hide
+  })
+
+  return (
+    <header className={cx}>
+      <div className='header'>
+        <div>
+          <Burger toggle={props.toggle} open={props.open} />
         </div>
-      </header>
-    )
+        <div className='logo'>
+          <Link to='/'>
+            <img src={logo} alt='evand-logo' />
+          </Link>
+        </div>
+      </div>
+    </header>
+  )
 }
 
 export default Header

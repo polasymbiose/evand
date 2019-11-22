@@ -11,20 +11,13 @@ const WideScreenGallery = ({ imgs, render }) => {
   const history = useHistory()
   const columns = useMedia(['(min-width: 1500px)', '(min-width: 1000px)', '(min-width: 600px)'], [5, 3, 3], 2)
   const [items, set] = useState(imgs)
-  const [controls, setControls] = useState({
-    index: 0,
-    open: false
-  })
   const counter = useRef(0)
   const [loading, setloading] = useState(true)
   const prev = useRef(null)
 
-  // useKeyboard('Escape', () =>
-  //   setControls({
-  //     ...controls,
-  //     open: false
-  //   })
-  // )
+  useKeyboard('Escape', () =>
+  history.push('/gallery')
+  )
 
   useEffect(() => {
     prev.current = gridItems
@@ -48,20 +41,13 @@ const WideScreenGallery = ({ imgs, render }) => {
     const imgHeight = (imgWidth - 24) * child.factor
     const arrOfcombinedHeights = colCalcY.map(col => arrSum(col))
     const smallestColumn = arrOfcombinedHeights.indexOf(Math.min.apply(null, arrOfcombinedHeights))
-
     colCalcY[smallestColumn].push(imgHeight)
-
     cols[smallestColumn].push({ ...child, width: imgWidth, height: imgHeight, index: i })
     return { ...child, index: i, column: currentColumn }
   })
 
-  const handleClick = (index, animating, name) => () => {
+  const handleClick = (name) => () => {
     history.push(`/gallery/${name}`)
-    animating &&
-      setControls({
-        index,
-        open: true
-      })
   }
   const handleOnLoad = () => {
     counter.current += 1
@@ -78,7 +64,7 @@ const WideScreenGallery = ({ imgs, render }) => {
       <Loader active={loading} />
       {!loading && (
         <>
-          {render(gridItems, controls, setControls)}
+          {render(gridItems)}
           <div className='wsgallery'>
             {cols.map((col, i) => (
               <div className='column' key={`galleryColumn-${i}`}>

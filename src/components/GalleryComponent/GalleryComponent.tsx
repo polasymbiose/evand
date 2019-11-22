@@ -20,8 +20,8 @@ const GalleryComponent = () => {
           return (
           <WideScreenGallery
             imgs={images}
-            render={(items: any[], controls: { index: number; open: boolean }, setControls: () => void) => (
-              <FullGallery setGalleryControls={setControls} galleryControls={controls} imgs={items} />
+            render={(items: any[]) => (
+              <FullGallery imgs={items} />
             )}
           />
         )}}

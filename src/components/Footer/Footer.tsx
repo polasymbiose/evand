@@ -1,14 +1,18 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
-import useOpenGallery from '../../hooks/useOpenGallery';
+// @ts-ignore
+import { Link, useLocation } from 'react-router-dom';
 import "./footer.scss";
 const cn = require('classnames')
 
 const Footer = () => {
-  const openGallery = useOpenGallery()
+  const location = useLocation()
+  const { pathname } = location
+  const pathSplit = pathname.split('/')
+  const hide = pathSplit.length > 2 && pathSplit[2] !== ''
+
   const cx = cn({
     footer: true,
-    hide: openGallery
+    hide
   })
   return (
     <div className={cx}>

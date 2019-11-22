@@ -1,12 +1,7 @@
-import React, { useEffect } from 'react'
-import { GlobalObservable } from '../../App'
+import React from 'react'
 import './datenschutz.scss'
 
 const Datenschutz = () => {
-  useEffect(() => {
-    GlobalObservable.next({ openGallery: false, initHome: true })
-  }, [])
-
   return (
     <div className='datenschutz'>
       <h1>Datenschutzerkl&auml;rung</h1>

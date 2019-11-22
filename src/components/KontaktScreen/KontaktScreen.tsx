@@ -1,7 +1,6 @@
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './kontakt.scss'
-import { GlobalObservable } from '../../App'
 
 const KontaktScreen = () => {
   const API_PATH = '/index.php'
@@ -37,10 +36,6 @@ const KontaktScreen = () => {
       }
       )
   }
-
-  useEffect(() => {
-    GlobalObservable.next({ openGallery: false, initHome: true })
-  }, [])
 
   return (
     <div className="kontakt">

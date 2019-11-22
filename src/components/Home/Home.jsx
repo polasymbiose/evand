@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { GlobalObservable } from '../../App'
 import Loader from '../Loader/Loader'
 import '../Page/page-transition.scss'
 import './home.scss'
@@ -31,7 +30,6 @@ const Home = () => {
     if (counter.current >= imgAr.length) {
       setTimeout(() => {
         setloading(false)
-        GlobalObservable.next({openGallery: false, initHome: true})
         counter.current = 0
       }, 1000);
     }

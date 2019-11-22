@@ -1,5 +1,5 @@
-import { debounce, get } from 'lodash'
-import React, { Dispatch, SetStateAction, useLayoutEffect, useEffect, useRef, useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { get } from 'lodash'
 // @ts-ignore
 import Carousel from 'react-awesome-slider'
 // @ts-ignore
@@ -7,7 +7,6 @@ import CarouselStyles from 'react-awesome-slider/src/core/styles.scss'
 // @ts-ignore
 import { useHistory, useLocation } from 'react-router-dom'
 import { animated, useSpring } from 'react-spring'
-import { GlobalObservable } from '../../App'
 import Burger from '../Burger/Burger'
 import { Images } from '../GalleryComponent/GalleryComponent'
 import Loader from '../Loader/Loader'
@@ -15,73 +14,31 @@ import './FullGallery.scss'
 
 var classNames = require('classnames')
 
-interface GalleryControls {
-  index: number
-  open: boolean
-}
-
 interface FullGalleryProps {
-  galleryControls: GalleryControls
-  setGalleryControls: Dispatch<SetStateAction<{ index: number; open: boolean }>>
   imgs: Images[]
 }
 
-export default function FullGallery({ galleryControls, setGalleryControls, imgs }: FullGalleryProps) {
+export default function FullGallery({ imgs }: FullGalleryProps) {
   const [loading, setloading] = useState(false)
-  const imgRef = useRef(new Image())
   const history = useHistory()
   const location = useLocation()
-
   const { pathname } = location
   const pathSplit = pathname.split('/')
-  console.log('pathSplit :', pathSplit);
   const isOpen = pathSplit.length > 2 && pathSplit[2] !== ''
-let asdf = false
-  useLayoutEffect(() => {
-    asdf = true
-    if (isOpen) {
-      const imgPath = pathSplit[2]
-      const findImg = imgs.find((el, index) => {
-        if (el.src.includes(imgPath)) {
-          setGalleryControls({
-            index,
-            open: true
-          })
-          console.log(index);
-        }
-
-        return el.src.includes(imgPath)
-      })
-      console.log('cdm', imgPath, findImg);
-
-    }
-
-
-  }, []);
+  const imgPath = pathSplit[2] || ''
+  const findIndex = imgs.findIndex(el => {
+    return el.src.includes(imgPath)
+  })
 
   useEffect(() => {
-    const foo = GlobalObservable.value
-    GlobalObservable.next({
-      ...foo,
-      openGallery: isOpen
-    })
-  }, [galleryControls.open])
-
-  useEffect(() => {
-    if (!isOpen && galleryControls.index >= imgs.length - 1) {
-      setGalleryControls({
-        index: 0,
-        open: false
-      })
+    isOpen ? document.body.classList.add('noscroll') : document.body.classList.remove('noscroll')
+    return () => {
+      document.body.classList.remove('noscroll')
     }
-  }, [imgs])
+  })
 
   const handleClose = () => {
     history.push('/gallery')
-    setGalleryControls({
-      ...galleryControls,
-      open: false
-    })
   }
 
   const fullGallery = classNames('fullGallery', { open: isOpen })
@@ -91,25 +48,9 @@ let asdf = false
     config: { tension: 350, friction: 50 }
   })
 
-  const imageAr = [...imgs].map((item: Images, index: number) => {
-    return (
-      <div
-        key={item.src}
-        className='galleryImg'
-        // onClick={handleSwitch(1)}
-        style={{
-          backgroundImage: `url(${item.src})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat'
-        }}
-      />
-    )
-  })
-  console.log('galleryControls.index :', galleryControls.index);
   return (
     <div className={fullGallery}>
-      <animated.div className='closeGallery' style={burgerSpring}>
+      <animated.div className="closeGallery" style={burgerSpring}>
         <Burger toggle={handleClose} open={isOpen} gallery />
       </animated.div>
 
@@ -118,29 +59,40 @@ let asdf = false
       {isOpen && (
         <Carousel
           infiniteLoop
-          // transitionDelay={100}
-          useKeyboardArrows
+          useKeyboardArrows={true}
           onTransitionStart={() => {}}
           onTransitionRequest={(e: any) => {
-            const next = e.eventName === 'next' ? 1 : -1;
-            const foo = (galleryControls.index + next) % imgs.length
-            const finalIndex = foo < 0 ? imgs.length -1 : foo
+            const next = e.eventName === 'next' ? 1 : -1
+            const foo = (e.currentIndex + next) % imgs.length
+            const finalIndex = foo < 0 ? imgs.length - 1 : foo
             const n = get(imgs, [finalIndex, 'src'], false)
             // @ts-ignore
             const name = n && n.split('/').pop().replace('.jpg', '')
             history.push(`/gallery/${name}`)
-            setGalleryControls({
-              ...galleryControls,
-              index: e.currentIndex +1
-            })
           }}
           showThumbs={false}
-          selected={galleryControls.index}
+          selected={findIndex}
           startupScreen={<div />}
           cssModule={CarouselStyles}
           bullets={false}
         >
-          {imageAr}
+          {[...imgs].map((item: Images, index: number) => {
+            return (
+              <div key={item.src} className={'sliderWrapper'}>
+                <div
+
+                style={{
+                  backgroundImage: `url(${item.src})`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'contain',
+                  backgroundRepeat: 'no-repeat',
+                  width: '100%',
+                  height: '100%'
+                }}
+              />
+              </div>
+            )
+          })}
         </Carousel>
       )}
     </div>

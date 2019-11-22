@@ -36,7 +36,7 @@ const Column = ({ column, handleClick, colIndex }) => {
         return (
           <div className='listItem' key={`${key}-${item.index}-colIndex${colIndex}`} style={{ width: item.width }}>
             <animated.div
-              onClick={handleClick(item.index, animating.current, name)}
+              onClick={handleClick(name)}
               src={item.thumb}
               style={{ backgroundImage: `url(${item.thumb})`, backgroundRepeat: 'no-repeat', ...rest }}
             />

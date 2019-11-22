@@ -40,7 +40,7 @@
     justify-content: center;
     align-items: center;
     will-change: transform, opacity;
-    background-size: contain;
+    background-size: 90%;
     background-repeat: no-repeat;
     background-position-y: center;
   }
@@ -62,12 +62,18 @@
   }
 }
 
+.sliderWrapper {
+  padding: $padL;
+  width: 100%;
+  height: 100%;
+}
+
 .awssld {
   --content-background-color: transparent;
   position: relative;
   top: 50%;
+  height: 100%;
   transform: translateY(-50%);
-
 }
 
 .awssld__startUp {

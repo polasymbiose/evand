@@ -1,14 +1,8 @@
-import React, { useEffect } from 'react'
-import '../Page/page-transition.scss'
-import './impressum.scss'
-import { GlobalObservable } from '../../App';
+import React from 'react';
+import '../Page/page-transition.scss';
+import './impressum.scss';
 
 const Impressum = () => {
-
-  useEffect(() => {
-    GlobalObservable.next({openGallery: false, initHome: true})
-  }, []);
-
   return (
     <div className="impressum">
       <h1>Impressum</h1>

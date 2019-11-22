@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { BehaviorSubject } from 'rxjs'
@@ -13,8 +13,6 @@ import KontaktScreen from './components/KontaktScreen/KontaktScreen'
 import Menu from './components/Menu/Menu'
 import Page from './components/Page/Page'
 import { OpenMenuObservable, useOpenMenu } from './hooks/useOpenGallery'
-
-export const GlobalObservable = new BehaviorSubject({openGallery: true, initHome: false})
 
 const Index = () => {
   return (
@@ -62,16 +60,17 @@ const DatenschutzScreen = () => {
 
 const App = () => {
   const [openMenu, setOpenMenu] = useState(false)
-  useOpenMenu()
 
   const toggle = () => {
     setOpenMenu(!openMenu)
-    OpenMenuObservable.next(!openMenu)
   }
 
-  const onEnter = () => {
-    // console.log('go');
-  }
+  useEffect(() => {
+    openMenu ? document.body.classList.add('noscroll') : document.body.classList.remove('noscroll')
+    return () => {
+      document.body.classList.remove('noscroll')
+    }
+  }, [openMenu]);
 
   return (
     <BrowserRouter>
@@ -89,7 +88,6 @@ const App = () => {
                       <CSSTransition
                         key={foo[1]}
                         classNames="page"
-                        onEnter={onEnter}
                         timeout={{
                           enter: 500,
                           exit: 500
