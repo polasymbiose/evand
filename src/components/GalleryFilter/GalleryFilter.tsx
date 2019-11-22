@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './GalleryFilter.scss'
+import useMedia from '../../hooks/useMedia'
 const json = require('../../img.json')
 const cn = require('classnames')
 
@@ -8,6 +9,8 @@ interface GalleryFilterProps {
 }
 
 const GalleryFilter = ({ render }: GalleryFilterProps) => {
+  const bp = useMedia(['(min-width: 750px)'], [true], false)
+
   const merge = (a: any[], b: any[]) => a.filter(aa => !b.find(bb => aa.src === bb.src)).concat(b)
   let imgs: any[] = []
   Object.keys(json.gallery).forEach(key => {
@@ -35,18 +38,20 @@ const GalleryFilter = ({ render }: GalleryFilterProps) => {
     })
     filter.length > 0 ? setImageFilter(filter) : setImageFilter(imgs)
   }
-
+  console.log('bp :', bp);
 
   return (
     <div className="galleryWrapper">
       <div className="galleryFilter">
         <form>
           <fieldset>
-            <ul>
+            <ul className={cn({
+                  mobile: !bp
+                })}>
               {Object.keys(json.gallery).map((key, index) => {
                 const cx = cn({
                   toggle: true,
-                  open: checkbox.has(key)
+                  open: checkbox.has(key),
                 })
                 return (
                   <li key={`filter-${key}-${index}`}>

@@ -16,8 +16,14 @@
 
     li {
       text-transform: uppercase;
-      margin-right: $padS;
       margin-bottom: $padS;
+    }
+
+    &.mobile {
+      justify-content: flex-start;
+      li {
+        flex: 1 0 33%;
+      }
     }
   }
 
@@ -38,33 +44,6 @@
     }
   }
 }
-
-// Base Colors
-$white: #fff;
-$black: #000;
-$gray: #333;
-$puple: #b95ed5;
-$pink: #f79494;
-//
-// Text Colors
-$font-white: $white;
-$font-black: $black;
-$font-gray: $gray;
-$font-puple: $puple;
-$font-pink: $pink;
-//
-// Background Colors
-$background-white: $white;
-$background-black: $black;
-$background-gray: $gray;
-$background-puple: $puple;
-$background-pink: $pink;
-//
-// Border Colors
-$border-white: $white;
-$border-black: $black;
-$border-gray: $gray;
-$border-pink: $pink;
 
 .toggle {
   display: flex;
@@ -91,18 +70,17 @@ $border-pink: $pink;
     height: 20px;
     display: block;
     position: relative;
-    margin: auto;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     text-indent: -999px;
     overflow: hidden;
-    border: 1px solid $border-white;
+    border: 1px solid $white;
     cursor: pointer;
   }
 
   input[type='checkbox'].checkbox + label {
-    border: 1px solid $border-white;
+    border: 1px solid $white;
     background: transparent;
   }
 
@@ -126,13 +104,13 @@ $border-pink: $pink;
 
 
   input[type='checkbox'].checkbox + .open:before {
-    background: $background-white;
+    background: $white;
     opacity: 1;
     transform: rotate(-45deg);
   }
 
   input[type='checkbox'].checkbox + .open:after {
-    background: $background-white;
+    background: $white;
     opacity: 1;
     transform: rotate(45deg);
   }
