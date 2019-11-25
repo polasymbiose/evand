@@ -3327,10 +3327,20 @@ deep-extend@^0.6.0:
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
   integrity sha512-LOHxIOaPYdHlJRtCQfDIVZtfw/ufM8+rVj649RIHzcm/vGwQRXFt6OPqIFWsm2XEMrNIEtWR64sY1LEKD2vAOA==
 
+deep-freeze@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/deep-freeze/-/deep-freeze-0.0.1.tgz#3a0b0005de18672819dfd38cd31f91179c893e84"
+  integrity sha1-OgsABd4YZygZ39OM0x+RF5yJPoQ=
+
 deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
   integrity sha1-s2nW+128E+7PUk+RsHD+7cNXzzQ=
+
+deepmerge@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.2.1.tgz#5d3ff22a01c00f645405a2fbc17d0778a1801170"
+  integrity sha512-R9hc1Xa/NOBi9WRVUWg19rl1UB7Tt4kuPd+thNJgFZoxXsTz7ncaPaeIm+40oSGuP33DfMb4sZt1QIGiJzC4EA==
 
 default-gateway@^4.2.0:
   version "4.2.0"
@@ -3679,6 +3689,13 @@ entities@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/entities/-/entities-2.0.0.tgz#68d6084cab1b079767540d80e56a39b423e4abf4"
   integrity sha512-D9f7V0JSRwIxlRI2mjMqufDrRDnx8p+eEOz7aUM9SuvF8gsBzra0/6tbjl1m8eQHrZlYj6PxqE00hZ1SAIKPLw==
+
+equals@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/equals/-/equals-1.0.5.tgz#212062dde5e1a510d955f13598efcc6a621b6ace"
+  integrity sha1-ISBi3eXhpRDZVfE1mO/MamIbas4=
+  dependencies:
+    jkroso-type "1"
 
 errno@^0.1.3, errno@~0.1.7:
   version "0.1.7"
@@ -5971,6 +5988,11 @@ jest@24.7.1:
   dependencies:
     import-local "^2.0.0"
     jest-cli "^24.7.1"
+
+jkroso-type@1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/jkroso-type/-/jkroso-type-1.1.1.tgz#bc4ced6d6c45fe0745282bafc86a9f8c4fc9ce61"
+  integrity sha1-vEztbWxF/gdFKCuvyGqfjE/JzmE=
 
 js-base64@^2.1.8:
   version "2.5.1"
@@ -8324,7 +8346,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.3"
 
-prop-types@^15.5.8, prop-types@^15.6.2:
+prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8408,6 +8430,17 @@ punycode@^2.1.0, punycode@^2.1.1:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
+pure-react-carousel@^1.23.3:
+  version "1.23.3"
+  resolved "https://registry.yarnpkg.com/pure-react-carousel/-/pure-react-carousel-1.23.3.tgz#f6ebf4bbacd34018375c26292ecef47d69d6d58b"
+  integrity sha512-dZ/O77e4+HpxdbVpXImSmoKCSMTjt9h1u8btfDfKw9BdVjUxovRCcZYCiJAtFiSB0odB8A3yHegrQ0hdcR9Rnw==
+  dependencies:
+    "@babel/runtime" "^7.5.5"
+    deep-freeze "0.0.1"
+    deepmerge "^2.2.1"
+    equals "^1.0.5"
+    prop-types "^15.6.2"
+
 q@^1.1.2:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
@@ -8484,6 +8517,14 @@ rc@^1.2.7:
     ini "~1.3.0"
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
+
+react-alice-carousel@^1.16.0:
+  version "1.16.0"
+  resolved "https://registry.yarnpkg.com/react-alice-carousel/-/react-alice-carousel-1.16.0.tgz#a45ae8172f2cdf4864f9c86745d178c93fc4ec81"
+  integrity sha512-IZDdOpNS53W2o5+IdSITTt4sXkl0LzsKPa3KNrs6TiTWIlad2SSpSMQQOl6hVWLfNPo3BJvgwr7IHlVETWGGLA==
+  dependencies:
+    prop-types "^15.5.10"
+    vanilla-swipe "^0.3.0"
 
 react-app-polyfill@^1.0.1:
   version "1.0.4"
@@ -10300,6 +10341,11 @@ value-equal@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/value-equal/-/value-equal-1.0.1.tgz#1e0b794c734c5c0cade179c437d356d931a34d6c"
   integrity sha512-NOJ6JZCAWr0zlxZt+xqCHNTEKOsrks2HQd4MqhP1qy4z1SkbEP467eNx6TgDKXMvUOb+OENfJCZwM+16n7fRfw==
+
+vanilla-swipe@^0.3.0:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/vanilla-swipe/-/vanilla-swipe-0.3.1.tgz#b3c127fc81e4264f3f0691c2a724c15dd1f252be"
+  integrity sha512-2fZ43or7VOy6BXEZvm/axPsY1+5WkCWFKLOZvIqK1DcS3uKNRfpcZ/X4iBu56A7ij1iS2mBaMDhQwucsUXjB8Q==
 
 vary@~1.1.2:
   version "1.1.2"
