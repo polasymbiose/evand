@@ -33,7 +33,6 @@
     height: 100vh;
   }
 
-
   .galleryImg {
     cursor: pointer;
     position: absolute;
@@ -71,50 +70,34 @@
 .sliderWrapper {
   padding: $padL;
   width: 100%;
+  height: 100vh;
+
+}
+
+.imageLoader {
+  display: block;
+  width: 100%;
   height: 100%;
-}
 
-.awssld {
-  --content-background-color: transparent;
-  position: relative;
-  top: 50%;
-  height: 100%;
-  transform: translateY(-50%);
-}
-
-.awssld__startUp {
-  background-color: transparent;
-}
-
-.awssld__controls__arrow-right {
-  transform: translate(0);
-  opacity: 1;
-
-  &:before {
-    transform-origin: 100% 100% 0;
-    top: -50%;
-    transform: rotate(-25deg);
-  }
-
-  &:after {
-    transform-origin: 100% 0% 0;
-    top: 50%;
-    transform: rotate(25deg);
-  }
-
-  &.awssld__controls__arrow-right--active {
-    opacity: 0;
-
-    &:before {
-      transform-origin: 100% 100% 0;
-      top: -50%;
-      transform: rotate(-25deg) translate3d(50%, 0, 0) !important;
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
     }
+    100% {
+      opacity: 1;
+    }
+  }
 
-    &:after {
-      transform-origin: 100% 0% 0;
-      top: 50%;
-      transform: rotate(25deg) translate3d(50%, 0, 0) !important;
+  img {
+    width: 0;
+    height: 0;
+
+    &.loaded {
+      width: 100%;
+      height: 100%;
+      animation: fadeIn 1s ease-in-out;
+      animation-fill-mode: forwards;
+      object-fit: contain;
     }
   }
 }

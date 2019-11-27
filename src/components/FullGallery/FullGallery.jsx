@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { get } from 'lodash'
-// import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Image } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
-// import AwesomeSlider from 'react-awesome-slider'
-// import CarouselStyles from 'react-awesome-slider/src/core/styles.scss'
+import 'pure-react-carousel/dist/react-carousel.es.css'
 import { useHistory, useLocation } from 'react-router-dom'
 import { animated, useSpring } from 'react-spring'
+import useImage from 'use-image'
 import Burger from '../Burger/Burger'
 import Loader from '../Loader/Loader'
 import './FullGallery.scss'
@@ -15,7 +13,8 @@ import 'react-alice-carousel/lib/alice-carousel.css'
 var classNames = require('classnames')
 
 export default function FullGallery({ imgs }) {
-  const [loading, setloading] = useState(false)
+  const [visImg, setVisImg] = useState([])
+  const sliderRef = useRef(null)
   const history = useHistory()
   const location = useLocation()
   const { pathname } = location
@@ -44,99 +43,69 @@ export default function FullGallery({ imgs }) {
     config: { tension: 350, friction: 50 }
   })
 
+  const indexCorr = index => {
+    return index < 0 ? imgs.length - 1 : imgs.length <= index ? 0 : index
+  }
+
+  const load = index => {
+    setVisImg([indexCorr(index - 1), index, indexCorr(index + 1)])
+  }
+
   return (
     <div className={fullGallery}>
       <animated.div className="closeGallery" style={burgerSpring}>
         <Burger toggle={handleClose} open={isOpen} gallery />
       </animated.div>
 
-      {/* <Loader active={loading} /> */}
-
-      <AliceCarousel mouseTrackingEnabled>
-        {[...imgs].map((item, index) => {
-          return (
-            <div key={item.src} className={'sliderWrapper'}>
-              <div
-                style={{
-                  backgroundImage: `url(${item.src})`,
-                  backgroundPosition: 'center',
-                  backgroundSize: 'contain',
-                  backgroundRepeat: 'no-repeat',
-                }}
-              />
-            </div>
-          )
-        })}
-      </AliceCarousel>
-
-      {/* <CarouselProvider
-        naturalSlideWidth={1000}
-        naturalSlideHeight={1000}
-        totalSlides={imgs.length}
-        currentSlide={findIndex}
-        hasMasterSpinner={false}
-        lockOnWindowScroll={true}
-        infinite={true}
-
-      >
-        <Slider className={'mainGallery'} onChange={(e) => {
-          console.log('e :', e)
-        }}>
-        {[...imgs].map((item, index) => {
-            return (
-              <Slide index={index} key={item.src}>
-                  <Image
-                    src={item.src}
-                    isBgImage={true}
-                    hasMasterSpinner={true}
-                  >
-                    </Image>
-              </Slide>
-            )
-          })}
-        </Slider>
-        <ButtonBack>Back</ButtonBack>
-        <ButtonNext>Next</ButtonNext>
-      </CarouselProvider> */}
-
-
-        {/* <AwesomeSlider
-          infiniteLoop
-          useKeyboardArrows={true}
-          onTransitionStart={() => {}}
-          onTransitionRequest={e => {
-            const next = e.eventName === 'next' ? 1 : -1
-            const foo = (e.currentIndex + next) % imgs.length
-            const finalIndex = foo < 0 ? imgs.length - 1 : foo
-            const n = get(imgs, [finalIndex, 'src'], false)
-            const name = n && n.split('/').pop().replace('.jpg', '')
+      {isOpen && (
+        <AliceCarousel
+          ref={sliderRef}
+          infinite
+          startIndex={findIndex}
+          dotsDisabled={true}
+          autoHeight
+          onInitialized={e => {
+            load(e.slide)
+          }}
+          onSlideChanged={e => {
+            load(e.slide)
+            const n = get(imgs, [e.slide, 'src'], false)
+            if (!n) return
+            const name = n
+              .split('/')
+              .pop()
+              .replace('.jpg', '')
             history.push(`/gallery/${name}`)
           }}
-          showThumbs={false}
-          selected={findIndex}
-          startupScreen={<div />}
-          cssModule={CarouselStyles}
-          bullets={false}
-        >
-          {[...imgs].map((item, index) => {
+          items={[...imgs].map((item, index) => {
             return (
               <div key={item.src} className={'sliderWrapper'}>
-                <div
-
-                style={{
-                  backgroundImage: `url(${item.src})`,
-                  backgroundPosition: 'center',
-                  backgroundSize: 'contain',
-                  backgroundRepeat: 'no-repeat',
-                  width: '100%',
-                  height: '100%'
-                }}
-              />
+                {visImg.includes(index) && <ImageLoader item={item} />}
               </div>
             )
           })}
-        </AwesomeSlider> */}
+        />
+      )}
+      <div className="galleryArrows">
+        <div className="galleryLeft" onClick={sliderRef && sliderRef.current && sliderRef.current.slidePrev}>
+          -
+        </div>
+        <div className="galleryRight" onClick={sliderRef && sliderRef.current && sliderRef.current.slideNext}>
+          +
+        </div>
+      </div>
       }
+    </div>
+  )
+}
+
+const ImageLoader = ({ item }) => {
+  const [image, status] = useImage(item.src)
+
+  return (
+    <div className={'imageLoader'}>
+      <Loader active={status === 'loading'} />
+      {<img src={image && image.src} className={status === 'loaded' ? 'loaded' : ''}/>}
     </div>
   )
 }

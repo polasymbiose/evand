@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react'
+import React, { useRef } from 'react'
 import { animated, useTransition } from 'react-spring'
 import './Column.scss'
 const padS = 24
@@ -40,48 +40,11 @@ const Column = ({ column, handleClick, colIndex }) => {
               src={item.thumb}
               style={{ backgroundImage: `url(${item.thumb})`, backgroundRepeat: 'no-repeat', ...rest }}
             />
-            {/* <animated.div
-
-              onClick={handleClick(item.index, animating.current)}
-            /> */}
           </div>
         )
       })}
     </>
   )
 }
-
-// const Galleryimage = props => {
-//   const [vis, setvis] = useState(false);
-//   const mounted = useRef(false)
-//   const image = useRef(new Image())
-
-//   const handleInview = (a, b) => {
-//     if (a) {
-//       setvis(a)
-//     }
-//   }
-
-//   const bounce = debounce(handleInview, 500, { leading: false })
-
-//   useEffect(() => {
-//     mounted.current = true
-
-//     return  () => {
-//       mounted.current = false
-//     }
-//   }, []);
-//   const s = { ...props.rest }
-//   const sVis =
-//   return (
-//     <InView
-//       onChange={(inView, entry) => {
-//         bounce(inView)
-//       }}
-//     >
-//       <animated.div style={vis ? sVis : s} onClick={props.onClick} />
-//     </InView>
-//   )
-// }
 
 export default Column
