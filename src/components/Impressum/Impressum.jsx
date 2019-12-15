@@ -24,12 +24,12 @@ const Impressum = () => {
         <br />
         E-Mail: kontakt@evand.de
       </p>
-      <h2>Umsatzsteuer-ID</h2>
+      {/* <h2>Umsatzsteuer-ID</h2>
       <p>
         Umsatzsteuer-Identifikationsnummer gem&auml;&szlig; &sect;27 a Umsatzsteuergesetz:
         <br />
         DE 999 999 999
-      </p>
+      </p> */}
       <h2>Streitschlichtung</h2>
       <p>
         Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{' '}

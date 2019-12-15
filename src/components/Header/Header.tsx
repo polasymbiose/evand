@@ -1,7 +1,12 @@
 import * as React from 'react'
 // @ts-ignore
 import { Link, useLocation } from 'react-router-dom'
-import logo from '../../assets/img/logo/Logo-weiss.png'
+import logoBlauOut from '../../assets/img/logo/evand-fotografie-Logo-blau-outline.png'
+import logoBlau from '../../assets/img/logo/evand-fotografie-Logo-blau.png'
+import logoBlackOut from '../../assets/img/logo/evand-fotografie-Logo-schwarz-outline.png'
+import logoBlack from '../../assets/img/logo/evand-fotografie-Logo-schwarz.png'
+import logoWhiteOut from '../../assets/img/logo/evand-fotografie-Logo-weiss-outline.png'
+import logoWhite from '../../assets/img/logo/evand-fotografie-Logo-weiss.png'
 import Burger from '../Burger/Burger'
 import './header.scss'
 
@@ -12,6 +17,8 @@ const Header = (props: { open: boolean; toggle: () => void }) => {
   const { pathname } = location
   const pathSplit = pathname.split('/')
   const hide = pathSplit.length > 2 && pathSplit[2] !== ''
+  const logos = [logoBlauOut, logoBlau, logoBlackOut, logoBlack, logoWhiteOut, logoWhite]
+  var logo = logos[Math.floor(Math.random()*logos.length)];
 
   const cx = cn({
     hide

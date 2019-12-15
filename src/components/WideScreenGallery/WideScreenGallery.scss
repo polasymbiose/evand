@@ -34,7 +34,9 @@
   flex-direction: row;
 
   .listItem {
+
     > div {
+      cursor: zoom-in;
       background-size: 120%;
       background-position: top center;
     }

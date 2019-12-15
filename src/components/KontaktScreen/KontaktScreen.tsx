@@ -14,27 +14,26 @@ const KontaktScreen = () => {
 
   const handleFormSubmit = (e: any) => {
     e.preventDefault()
+
     axios({
       method: 'post',
       url: `${API_PATH}`,
-      headers: { 'content-type': 'application/json' },
-      data: kontakt
+      data: { ...kontakt }
     })
-    .then(result => {
+      .then(result => {
         setKontakt({
           ...kontakt,
           mailSent: true,
           error: false
         })
       })
-      .catch(() =>{
+      .catch(() => {
         setKontakt({
           ...kontakt,
           error: true,
           mailSent: false
         })
-      }
-      )
+      })
   }
 
   return (
@@ -66,7 +65,7 @@ const KontaktScreen = () => {
             rows={6}
             onChange={e => setKontakt({ ...kontakt, message: e.target.value })}
           />
-          <input type="submit" value="Submit" onClick={e => !kontakt.error && handleFormSubmit(e)} />
+          <input type="submit" disabled={kontakt.error ||kontakt.mailSent} value="Senden" onClick={e => handleFormSubmit(e)} />
           <div>
             {kontakt.mailSent && <p>Danke für deine Nachricht</p>}
             {kontakt.error && <p>Da ist etwas schief gelaufen. Versuche es nochmal</p>}

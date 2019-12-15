@@ -75,12 +75,12 @@
     -moz-box-sizing: border-box;
     text-indent: -999px;
     overflow: hidden;
-    border: 1px solid $white;
+    border: 1px solid $primary;
     cursor: pointer;
   }
 
   input[type='checkbox'].checkbox + label {
-    border: 1px solid $white;
+    border: 1px solid $primary;
     background: transparent;
   }
 
@@ -104,13 +104,13 @@
 
 
   input[type='checkbox'].checkbox + .open:before {
-    background: $white;
+    background: $primary;
     opacity: 1;
     transform: rotate(-45deg);
   }
 
   input[type='checkbox'].checkbox + .open:after {
-    background: $white;
+    background: $primary;
     opacity: 1;
     transform: rotate(45deg);
   }

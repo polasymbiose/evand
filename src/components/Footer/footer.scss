@@ -2,16 +2,14 @@
 
 .footer {
   width: 100%;
-  height: auto;
-  padding: $padM;
+  padding: $padS;
   border-bottom: 1px solid $white;
-  height: 69px;
   transition: all 500ms ease-in-out;
   .links {
-    padding: $padS;
     a {
       text-decoration: none;
       text-transform: uppercase;
+      font-size: 12px;
 
       &:first-of-type {
         margin-right: $padS;

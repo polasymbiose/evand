@@ -1,14 +1,11 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { animated, config, useSpring, useTrail } from 'react-spring';
-import './menu.scss';
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import Burger from '../Burger/Burger'
+import { animated, config, useSpring, useTrail } from 'react-spring'
+import './menu.scss'
 const classNames = require('classnames')
 
-const list = [
-  <Link to="/">Home</Link>,
-  <Link to="/gallery/">Gallery</Link>,
-  <Link to="/kontakt/">Kontakt</Link>
-]
+const list = [<Link to="/">Home</Link>, <Link to="/gallery/">Gallery</Link>, <Link to="/kontakt/">Kontakt</Link>]
 
 const Menu = props => {
   const [spring, set] = useSpring(() => ({
@@ -22,8 +19,8 @@ const Menu = props => {
 
   useEffect(() => {
     set({
-      to: { backgroundColor: props.open ? 'rgba(0,0,0,0.7)' : 'rgba(0,0,0,0)' },
-      from: { backgroundColor: props.open ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0.7)' }
+      to: { backgroundColor: props.open ? 'rgba(0,0,0,0.9)' : 'rgba(0,0,0,0)' },
+      from: { backgroundColor: props.open ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0.9)' }
     })
   }, [props.open, set])
 
@@ -40,6 +37,14 @@ const Menu = props => {
   return (
     <>
       <animated.nav style={spring} className={cx}>
+        <div
+          className={classNames({
+            menuburger: true,
+            active: props.open
+          })}
+        >
+          <Burger toggle={props.toggle} open={props.open} />
+        </div>
         <ul>
           {trail.map(({ x, height, opacity, marginLeft, ...rest }, index) => {
             return (

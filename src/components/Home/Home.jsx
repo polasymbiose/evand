@@ -24,36 +24,55 @@ const Home = () => {
     }
   }, [])
 
-
   const handleOnLoad = () => {
     counter.current += 1
     if (counter.current >= imgAr.length) {
       setTimeout(() => {
         setloading(false)
         counter.current = 0
-      }, 1000);
+      }, 1000)
     }
   }
 
-
   return (
-    <div className='home'>
-      <div className='toGallery'>
+    <div className="home">
+      <Loader active={loading} />
+      {!loading && (
+        <div className="bgWrapper">
+          {imgAr.map((item, i) => {
+            const imageClassNames = classNames('bg', { visible: index === i })
+            return <div key={item.src} className={imageClassNames} style={{ backgroundImage: `url(${item.src})` }} />
+          })}
+        </div>
+      )}
+
+      <div className="toGallery">
         {!loading && (
-          <Link to='/gallery/'>
-            <span>Gallery</span>
-          </Link>
+          <>
+            <h1>{'Herzlich Willkommen bei '}
+              <span>
+              {'EVAND Design & Fotografie'}
+              </span>
+            </h1>
+            <p>
+              {'In der '}
+              <Link to="/gallery/">
+                <span>Gallerie</span>
+              </Link>
+              {
+                ' findet ihr meine schönsten Arbeiten aus 2019. Ich bin gespannt was 2020 bereit hält. Seid ihr dabei?'}<br/> {'Dann würde ich mich freuen wenn wir einen Teil des Weges gemeinsam gehen. '
+              }
+              <Link to="/kontakt/">
+                <span>Meldet euch für Anfragen gerne bei mir.</span>
+              </Link>
+            </p>
+          </>
         )}
       </div>
-      <Loader active={loading} />
-      {!loading && imgAr.map((item, i) => {
-        const imageClassNames = classNames('bg', { visible: index ===  i })
-        return <div key={item.src} className={imageClassNames} style={{ backgroundImage: `url(${item.src})` }} />
-      })}
 
       {loading &&
         json.home.slider.map(img => {
-          return <img className='hideSlider' src={img.src} onLoad={handleOnLoad} key={img.src} />
+          return <img className="hideSlider" src={img.src} onLoad={handleOnLoad} key={img.src} />
         })}
     </div>
   )

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { HashRouter, Route, Switch } from 'react-router-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { BehaviorSubject } from 'rxjs'
 import './app.scss'
@@ -73,7 +73,7 @@ const App = () => {
   }, [openMenu]);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="app">
         <div className="body">
         <Header toggle={toggle} open={openMenu} />
@@ -113,7 +113,7 @@ const App = () => {
             </div>
         </div>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 

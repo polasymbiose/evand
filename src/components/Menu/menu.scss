@@ -3,7 +3,7 @@
 nav {
   position: fixed;
   z-index: 3;
-  padding-top: 147px;
+  padding: $padS $padS $padS $padS;
   width: 100%;
   height: 100%;
   left: 0;
@@ -13,16 +13,23 @@ nav {
     pointer-events: all;
   }
 
+  .menuburger {
+    transition: opacity 400ms;
+    opacity: 0;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
   ul {
     list-style-type: none;
-    display: inline-block;
+    justify-self: center;
   }
 
   li {
     position: relative;
-    // margin-bottom: $padS;
     display: block;
-    padding-left: $padS;
 
     div {
       display: inline-block;

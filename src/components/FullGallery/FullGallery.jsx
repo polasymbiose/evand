@@ -88,10 +88,10 @@ export default function FullGallery({ imgs }) {
       )}
       <div className="galleryArrows">
         <div className="galleryLeft" onClick={sliderRef && sliderRef.current && sliderRef.current.slidePrev}>
-          -
+          {`<`}
         </div>
         <div className="galleryRight" onClick={sliderRef && sliderRef.current && sliderRef.current.slideNext}>
-          +
+        {`>`}
         </div>
       </div>
       }
