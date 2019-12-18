@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import { BehaviorSubject } from 'rxjs'
 import './app.scss'
 import Footer from './components/Footer/Footer'
 import Impressum from './components/Impressum/Impressum'

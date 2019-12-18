@@ -1,0 +1,332 @@
+{
+  "home": {
+    "slider": [
+      {
+        "src": "http://evand.de/images/nature-1280-02.jpg",
+        "alt": "Wald bei Nebel"
+      },
+      {
+        "src": "http://evand.de/images/event-1280-01.jpg",
+        "alt": "Braut im Hochzeitskleid"
+      },
+      {
+        "src": "http://evand.de/images/portrait-1280-01.jpg",
+        "alt": "Portrait im farbigen Licht"
+      },
+      {
+        "src": "http://evand.de/images/portrait-1280-02.jpg",
+        "alt": "Portrait in schwarz weiss"
+      }
+    ]
+  },
+  "gallery": {
+    "portrait": [
+      {
+        "src": "http://evand.de/images/portrait-1280-01.jpg",
+        "thumb": "http://evand.de/images/portrait-400-01.jpg",
+        "alt": "portrait people",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/portrait-1280-02.jpg",
+        "thumb": "http://evand.de/images/portrait-400-02.jpg",
+        "alt": "portrait people",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/portrait-1280-03.jpg",
+        "thumb": "http://evand.de/images/portrait-400-03.jpg",
+        "alt": "portrait people",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/portrait-1280-04.jpg",
+        "thumb": "http://evand.de/images/portrait-400-04.jpg",
+        "alt": "portrait people",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/portrait-1280-05.jpg",
+        "thumb": "http://evand.de/images/portrait-400-05.jpg",
+        "alt": "portrait people",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/portrait-1280-06.jpg",
+        "thumb": "http://evand.de/images/portrait-400-06.jpg",
+        "alt": "portrait people",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/portrait-1280-07.jpg",
+        "thumb": "http://evand.de/images/portrait-400-07.jpg",
+        "alt": "portrait people",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/portrait-1280-08.jpg",
+        "thumb": "http://evand.de/images/portrait-400-08.jpg",
+        "alt": "portrait people",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/portrait-1280-09.jpg",
+        "thumb": "http://evand.de/images/portrait-400-09.jpg",
+        "alt": "portrait people",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/portrait-1280-10.jpg",
+        "thumb": "http://evand.de/images/portrait-400-10.jpg",
+        "alt": "portrait people",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/portrait-1280-11.jpg",
+        "thumb": "http://evand.de/images/portrait-400-11.jpg",
+        "alt": "portrait people",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/portrait-1280-12.jpg",
+        "thumb": "http://evand.de/images/portrait-400-12.jpg",
+        "alt": "portrait people",
+        "factor": 0.66
+      }
+    ],
+    "event": [
+      {
+        "src": "http://evand.de/images/event-1280-01.jpg",
+        "thumb": "http://evand.de/images/event-400-01.jpg",
+        "alt": "hochzeit",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/event-1280-02.jpg",
+        "thumb": "http://evand.de/images/event-400-02.jpg",
+        "alt": "hochzeit",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/event-1280-03.jpg",
+        "thumb": "http://evand.de/images/event-400-03.jpg",
+        "alt": "hochzeit",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/event-1280-04.jpg",
+        "thumb": "http://evand.de/images/event-400-04.jpg",
+        "alt": "hochzeit",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/event-1280-05.jpg",
+        "thumb": "http://evand.de/images/event-400-05.jpg",
+        "alt": "hochzeit",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/event-1280-06.jpg",
+        "thumb": "http://evand.de/images/event-400-06.jpg",
+        "alt": "hochzeit",
+        "factor": 1.5
+      }
+    ],
+    "nature": [
+      {
+        "src": "http://evand.de/images/nature-1280-01.jpg",
+        "thumb": "http://evand.de/images/nature-400-01.jpg",
+        "alt": "natur",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/nature-1280-02.jpg",
+        "thumb": "http://evand.de/images/nature-400-02.jpg",
+        "alt": "natur",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/nature-1280-03.jpg",
+        "thumb": "http://evand.de/images/nature-400-03.jpg",
+        "alt": "natur",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/nature-1280-04.jpg",
+        "thumb": "http://evand.de/images/nature-400-04.jpg",
+        "alt": "natur",
+        "factor": 1.5
+      }
+    ],
+    "food": [
+      {
+        "src": "http://evand.de/images/food-1280-01.jpg",
+        "thumb": "http://evand.de/images/food-400-01.jpg",
+        "alt": "essen",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/food-1280-02.jpg",
+        "thumb": "http://evand.de/images/food-400-02.jpg",
+        "alt": "essen",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/food-1280-03.jpg",
+        "thumb": "http://evand.de/images/food-400-03.jpg",
+        "alt": "essen",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/food-1280-04.jpg",
+        "thumb": "http://evand.de/images/food-400-04.jpg",
+        "alt": "essen",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/food-1280-05.jpg",
+        "thumb": "http://evand.de/images/food-400-05.jpg",
+        "alt": "essen",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/food-1280-06.jpg",
+        "thumb": "http://evand.de/images/food-400-06.jpg",
+        "alt": "essen",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/food-1280-07.jpg",
+        "thumb": "http://evand.de/images/food-400-07.jpg",
+        "alt": "essen",
+        "factor": 0.66
+      }
+    ],
+    "animals": [
+      {
+        "src": "http://evand.de/images/animals-1280-01.jpg",
+        "thumb": "http://evand.de/images/animals-400-01.jpg",
+        "alt": "tiere",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/animals-1280-02.jpg",
+        "thumb": "http://evand.de/images/animals-400-02.jpg",
+        "alt": "tiere",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/animals-1280-03.jpg",
+        "thumb": "http://evand.de/images/animals-400-03.jpg",
+        "alt": "tiere",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/animals-1280-04.jpg",
+        "thumb": "http://evand.de/images/animals-400-04.jpg",
+        "alt": "tiere",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/animals-1280-05.jpg",
+        "thumb": "http://evand.de/images/animals-400-05.jpg",
+        "alt": "tiere",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/animals-1280-06.jpg",
+        "thumb": "http://evand.de/images/animals-400-06.jpg",
+        "alt": "tiere",
+        "factor": 0.66
+      }
+    ],
+    "business": [
+      {
+        "src": "http://evand.de/images/business-1280-01.jpg",
+        "thumb": "http://evand.de/images/business-400-01.jpg",
+        "alt": "friseur",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/business-1280-02.jpg",
+        "thumb": "http://evand.de/images/business-400-02.jpg",
+        "alt": "friseur",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/business-1280-04.jpg",
+        "thumb": "http://evand.de/images/business-400-04.jpg",
+        "alt": "friseur",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/business-1280-05.jpg",
+        "thumb": "http://evand.de/images/business-400-05.jpg",
+        "alt": "friseur",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/business-1280-06.jpg",
+        "thumb": "http://evand.de/images/business-400-06.jpg",
+        "alt": "friseur",
+        "factor": 0.66
+      }
+    ],
+    "random": [
+      {
+        "src": "http://evand.de/images/random-1280-01.jpg",
+        "thumb": "http://evand.de/images/random-400-01.jpg",
+        "alt": "random shooting",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/random-1280-02.jpg",
+        "thumb": "http://evand.de/images/random-400-02.jpg",
+        "alt": "random shooting",
+        "factor": 1.5
+      },
+      {
+        "src": "http://evand.de/images/random-1280-03.jpg",
+        "thumb": "http://evand.de/images/random-400-03.jpg",
+        "alt": "random shooting",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/random-1280-04.jpg",
+        "thumb": "http://evand.de/images/random-400-04.jpg",
+        "alt": "random shooting",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/random-1280-05.jpg",
+        "thumb": "http://evand.de/images/random-400-05.jpg",
+        "alt": "random shooting",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/random-1280-06.jpg",
+        "thumb": "http://evand.de/images/random-400-06.jpg",
+        "alt": "random shooting",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/random-1280-07.jpg",
+        "thumb": "http://evand.de/images/random-400-07.jpg",
+        "alt": "random shooting",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/random-1280-08.jpg",
+        "thumb": "http://evand.de/images/random-400-08.jpg",
+        "alt": "random shooting",
+        "factor": 0.66
+      },
+      {
+        "src": "http://evand.de/images/random-1280-09.jpg",
+        "thumb": "http://evand.de/images/random-400-09.jpg",
+        "alt": "random shooting",
+        "factor": 0.66
+      }
+    ]
+  }
+}

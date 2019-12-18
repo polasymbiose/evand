@@ -23,6 +23,7 @@
 
   .closeGallery {
     position: absolute;
+    display: block;
     z-index: 11;
     right: $padL;
     top: 100px;

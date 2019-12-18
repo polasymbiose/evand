@@ -64,6 +64,7 @@
     "react-awesome-slider": "^2.2.1",
     "react-dev-utils": "^9.0.1",
     "react-dom": "^16.8.6",
+    "react-hook-screen-orientation": "^1.0.1",
     "react-intersection-observer": "^8.25.1",
     "react-lazy-load": "^3.0.13",
     "react-lazyload": "^2.5.0",

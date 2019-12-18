@@ -1,15 +1,8 @@
-import React, { useState, useEffect, useRef, Dispatch, SetStateAction } from 'react'
-import LazyImg from '../LazyImg/LazyImg'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
-import { useSpring, useTransition, animated, config } from 'react-spring'
-import { Spring, Transition } from 'react-spring/renderprops'
+import React, { Dispatch, SetStateAction } from 'react'
 import { Images } from '../GalleryComponent/GalleryComponent'
-import LazyLoad from 'react-lazyload'
-import './gallery.scss'
+import LazyImg from '../LazyImg/LazyImg'
 import '../LazyImg/lazyImg.scss'
-import { useRect } from '../../hooks/useRect'
-const json = require('../../img.json')
-const classNames = require('classnames')
+import './gallery.scss'
 
 interface GalleryProps {
   setPos: Dispatch<

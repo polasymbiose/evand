@@ -8591,6 +8591,11 @@ react-error-overlay@^6.0.3:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.3.tgz#c378c4b0a21e88b2e159a3e62b2f531fd63bf60d"
   integrity sha512-bOUvMWFQVk5oz8Ded9Xb7WVdEi3QGLC8tH7HmYP0Fdp4Bn3qw0tRFmr5TW6mvahzvmrK4a6bqWGfCevBflP+Xw==
 
+react-hook-screen-orientation@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-hook-screen-orientation/-/react-hook-screen-orientation-1.0.1.tgz#47204344c70aff094ea0d9b98d5ab2449986621c"
+  integrity sha512-8SWIwWKxMl3G761BFryKSccmZhQIJJmj4JAKDV3ToeGq2jW3Jf94Ruop5YFIwyt7jdqBAQbOsHe6cAhOQc367w==
+
 react-intersection-observer@^8.25.1:
   version "8.25.1"
   resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.25.1.tgz#26049fbbd9fbed10121552d220c5b433b041fd60"
