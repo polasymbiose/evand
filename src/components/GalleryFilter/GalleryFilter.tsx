@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './GalleryFilter.scss'
 import useMedia from '../../hooks/useMedia'
-import { jsonObservable } from '../Home/Home'
-// const json = require('../../img.json')
 const cn = require('classnames')
 
 interface GalleryFilterProps {
@@ -13,6 +11,7 @@ const GalleryFilter = ({ render }: GalleryFilterProps) => {
   const bp = useMedia(['(min-width: 750px)'], [true], false)
   const [json, setjson] = useState()
   const isMounted = useRef(false)
+  const initJson = useRef<any[]>([])
   const [imageFilter, setImageFilter] = useState<any[]>([])
   const [checkbox] = useState(new Map())
 
@@ -31,7 +30,7 @@ const GalleryFilter = ({ render }: GalleryFilterProps) => {
             const category = gallery[key]
             imgs = imgs.concat(category)
           })
-
+        initJson.current = imgs
         setImageFilter(imgs)
       })
       .catch()
@@ -60,7 +59,7 @@ const GalleryFilter = ({ render }: GalleryFilterProps) => {
     check.forEach(ar => {
       filter = merge(filter, ar)
     })
-    filter.length > 0 && setImageFilter(filter)
+    filter.length > 0 ? setImageFilter(filter) : setImageFilter(initJson.current)
   }
 
   return (
