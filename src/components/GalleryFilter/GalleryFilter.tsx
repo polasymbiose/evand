@@ -66,8 +66,6 @@ const GalleryFilter = ({ render }: GalleryFilterProps) => {
     <div className="galleryWrapper">
       <div className="galleryFilter">
         {json && (
-          <form>
-            <fieldset>
               <ul
                 className={cn({
                   mobile: !bp
@@ -95,8 +93,6 @@ const GalleryFilter = ({ render }: GalleryFilterProps) => {
                   )
                 })}
               </ul>
-            </fieldset>
-          </form>
         )}
       </div>
       {render(imageFilter)}
