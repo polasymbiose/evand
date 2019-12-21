@@ -21,7 +21,7 @@ const Header = (props: { open: boolean; toggle: () => void }) => {
   var logo = logos[Math.floor(Math.random()*logos.length)];
 
   const cx = cn({
-    hide
+    hide: false
   })
 
   return (

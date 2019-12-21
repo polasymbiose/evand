@@ -21,10 +21,6 @@ body {
     color: $white;
   }
 
-  h2 {
-    background-color: $black;
-  }
-
   &.noscroll {
     overflow: hidden;
     -webkit-overflow-scrolling: touch;

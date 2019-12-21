@@ -11,6 +11,7 @@ import Impressum from './components/Impressum/Impressum'
 import KontaktScreen from './components/KontaktScreen/KontaktScreen'
 import Menu from './components/Menu/Menu'
 import Page from './components/Page/Page'
+const cn = require('classnames')
 
 const Wrapper: FunctionComponent<any> = ({ children }) => {
   return (
@@ -52,19 +53,22 @@ const App = () => {
         <div className="body">
           <Header toggle={toggle} open={openMenu} />
           <Menu open={openMenu} toggle={toggle} />
-          <div className="pages">
-            <Route
-              render={({ location }) => {
-                const { pathname } = location
-                const foo = pathname.split('/')
-                return (
+          <Route
+            render={({ location }) => {
+              const { pathname } = location
+              const foo = pathname.split('/')
+              console.log('foo :', foo);
+              return (
+                <div
+                  className="pages"
+                >
                   <TransitionGroup>
                     <CSSTransition
-                      key={location.pathname}
+                      key={foo[1]}
                       classNames="page"
                       timeout={{
-                        enter: 500,
-                        exit: 500
+                        enter: 700,
+                        exit: 700
                       }}
                     >
                       <Route
@@ -117,10 +121,10 @@ const App = () => {
                       />
                     </CSSTransition>
                   </TransitionGroup>
-                )
-              }}
-            />
-          </div>
+                </div>
+              )
+            }}
+          />
         </div>
       </div>
     </HashRouter>

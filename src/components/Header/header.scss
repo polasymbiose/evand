@@ -6,8 +6,7 @@ header {
   display: block;
   width: 100%;
   z-index: 2;
-  background-color: $blackLight;
-  height: 56px;
+  background-color: $black;
   opacity: 1;
   transition: all 500ms ease-in-out;
 
@@ -19,6 +18,8 @@ header {
     align-content: center;
     align-items: center;
     padding: $padS $padS $padS $padS;
+    // box-shadow: 0 8px 6px -6px black;
+
   }
 
   .logo {

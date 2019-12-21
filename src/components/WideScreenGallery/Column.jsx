@@ -22,8 +22,7 @@ const Column = ({ column, handleClick, colIndex }) => {
     onRest: () => (animating.current = false),
     leave: () => ({ height: 0, opacity: 0.3, marginBottom: 0, backgroundSize: '90%' }),
     config: { mass: 1, tension: 300, friction: 50 },
-    unique: true,
-    trail: 0
+    unique: true
   })
 
   const handleOnClick = (name) => () => {

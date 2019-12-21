@@ -4,6 +4,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: $blackBright;
 }
 
 .body {
@@ -20,7 +21,4 @@
   display: flex;
   flex: 1;
 
-  >div {
-    flex: 1;
-  }
 }
