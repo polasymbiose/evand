@@ -16,7 +16,7 @@ const WideScreenGallery = ({ imgs, render }) => {
   const prev = useRef(null)
 
   useKeyboard('Escape', () =>
-  history.push('/gallery')
+    history.push('/gallery')
   )
 
   useEffect(() => {
@@ -75,9 +75,7 @@ const WideScreenGallery = ({ imgs, render }) => {
         </>
       )}
 
-      {imgs.map(img => {
-        return <img className='hideSlider' src={img.thumb} onLoad={handleOnLoad} key={img.thumb} />
-      })}
+      {imgs.map(img => <img className='hideSlider' src={img.thumb} onLoad={handleOnLoad} key={img.thumb} />)}
     </div>
   )
 }

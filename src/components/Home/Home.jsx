@@ -17,30 +17,29 @@ const Home = () => {
   const counter = useRef(0)
   const [loading, setloading] = useState(true)
 
-  useEffect(
-    () =>
-      void setInterval(() => {
-        isMounted.current && imgAr.length > 0 && set(state => (state + 1) % imgAr.length)
-      }, 6000),
-    [json]
-  )
-
   useEffect(() => {
     isMounted.current = true
-
-    fetch(`${process.env.PUBLIC_URL}/img.json`).then(res => {
-      return res.json()
-    }).then(r => {
-      jsonObservable.next({r})
-      isMounted.current && setjson(r)
-
-    }).catch()
-
+    fetch(`${process.env.PUBLIC_URL}/img.json`)
+      .then(async res => {
+        const r = await res.json()
+        jsonObservable.next({ r })
+        isMounted.current && setjson(r)
+      })
+      .catch()
     return () => {
       isMounted.current = false
     }
   }, [])
 
+  useEffect(() => {
+    const autoplay = void setInterval(() => {
+      isMounted.current && imgAr.length > 0 && set(state => (state + 1) % imgAr.length)
+    }, 6000)
+
+    return () => {
+      clearInterval(autoplay)
+    }
+  }, [json])
 
   const handleOnLoad = () => {
     counter.current += 1
@@ -86,8 +85,7 @@ const Home = () => {
         )}
       </div>
 
-      {loading &&
-        imgAr.map(img => <img className="hideSlider" src={img.src} onLoad={handleOnLoad} key={img.src} />)}
+      {loading && imgAr.map(img => <img className="hideSlider" src={img.src} onLoad={handleOnLoad} key={img.src} />)}
     </div>
   )
 }

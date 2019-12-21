@@ -11,7 +11,6 @@ import Home from './components/Home/Home'
 import KontaktScreen from './components/KontaktScreen/KontaktScreen'
 import Menu from './components/Menu/Menu'
 import Page from './components/Page/Page'
-import { OpenMenuObservable, useOpenMenu } from './hooks/useOpenGallery'
 
 const Index = () => {
   return (

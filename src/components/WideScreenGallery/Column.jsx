@@ -26,6 +26,10 @@ const Column = ({ column, handleClick, colIndex }) => {
     trail: 0
   })
 
+  const handleOnClick = (name) => () => {
+    !animating.current && handleClick(name)()
+  }
+
   return (
     <>
       {transitions.map(({ item, props: { ...rest }, key }) => {
@@ -36,7 +40,7 @@ const Column = ({ column, handleClick, colIndex }) => {
         return (
           <div className='listItem' key={`${key}-${item.index}-colIndex${colIndex}`} style={{ width: item.width }}>
             <animated.div
-              onClick={handleClick(name)}
+              onClick={handleOnClick(name)}
               src={item.thumb}
               style={{ backgroundImage: `url(${item.thumb})`, backgroundRepeat: 'no-repeat', ...rest }}
             />
