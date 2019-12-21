@@ -18,19 +18,13 @@ const GalleryComponent = ({data}: {data: any}) => {
   const [imageFilter, setImageFilter] = useState<Images[]>([])
   const [checkbox] = useState(new Map())
 
-  useEffect(() => {
-    fetch(`${process.env.PUBLIC_URL}/img.json`)
-      .then(async res => {
-        const r = await res.json()
-        const img = Object.keys(r.gallery).flatMap(key => r.gallery[key])
-        allImgs.current = img
-        setgallery(r.gallery)
-        setImageFilter(img)
-      })
-      .catch(e => {
-        console.log('errof fetching:', e)
-      })
-  }, [])
+  useEffect(()  => {
+    if (!data.gallery) return
+    const img = Object.keys(data.gallery).flatMap(key => data.gallery[key])
+    allImgs.current = img
+    setgallery(data.gallery)
+    setImageFilter(img)
+  }, [data])
 
   const merge = (a: any[], b: any[]) => a.filter(aa => !b.find(bb => aa.src === bb.src)).concat(b)
 
