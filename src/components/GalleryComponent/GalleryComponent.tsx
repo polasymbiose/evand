@@ -20,10 +20,10 @@ const GalleryComponent = ({data}: {data: any}) => {
 
   useEffect(()  => {
     if (!data.gallery) return
-    const img = Object.keys(data.gallery).flatMap(key => data.gallery[key])
-    allImgs.current = img
+    const imgs = Object.keys(data.gallery).flatMap(key => data.gallery[key])
+    allImgs.current = imgs
     setgallery(data.gallery)
-    setImageFilter(img)
+    setImageFilter(imgs)
   }, [data])
 
   const merge = (a: any[], b: any[]) => a.filter(aa => !b.find(bb => aa.src === bb.src)).concat(b)
@@ -42,9 +42,11 @@ const GalleryComponent = ({data}: {data: any}) => {
   const arrangeFilter = () => {
     let filter: Images[] = []
     const check = checkbox
+    // console.log('check :', check);
     check.forEach(imgAr => {
       filter = merge(filter, imgAr)
     })
+    // console.log('filter :', filter, allImgs.current);
     filter.length > 0 ? setImageFilter(filter) : setImageFilter(allImgs.current)
   }
 

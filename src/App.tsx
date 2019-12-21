@@ -11,7 +11,6 @@ import Impressum from './components/Impressum/Impressum'
 import KontaktScreen from './components/KontaktScreen/KontaktScreen'
 import Menu from './components/Menu/Menu'
 import Page from './components/Page/Page'
-import './components/Page/page-transition.scss'
 
 const Wrapper: FunctionComponent<any> = ({ children }) => {
   return (
@@ -25,6 +24,7 @@ const Wrapper: FunctionComponent<any> = ({ children }) => {
 const App = () => {
   const [openMenu, setOpenMenu] = useState(false)
   const [data, setdata] = useState({})
+  const [init, setinit] = useState(false)
 
   const toggle = () => {
     setOpenMenu(!openMenu)
@@ -60,7 +60,7 @@ const App = () => {
                 return (
                   <TransitionGroup>
                     <CSSTransition
-                      key={foo[1]}
+                      key={location.pathname}
                       classNames="page"
                       timeout={{
                         enter: 500,
@@ -76,7 +76,7 @@ const App = () => {
                               path="/"
                               render={props => (
                                 <Wrapper>
-                                  <Home {...props} data={data} />
+                                  <Home {...props} data={data} init={init} setinit={setinit} />
                                 </Wrapper>
                               )}
                             />

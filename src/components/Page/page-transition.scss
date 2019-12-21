@@ -1,61 +1,79 @@
+@import "../../style/variables.scss";
+
 .page {
   flex: 1;
   display: flex;
+  background: $black;
   overflow-y: auto;
   top: 0;
   width: 100vw;
   min-height: 100%;
   -webkit-overflow-scrolling: touch;
-  transition: transform 500ms ease-in-out, box-shadow 500ms ease-in-out;
-}
+  transition: transform 500ms ease-in-out, opacity 500ms ease-in-out;
 
-.page-enter {
-  position: absolute;
-  z-index: 1;
-  transform: translateX(0);
-}
+  &.page-enter {
+    position: absolute;
+    z-index: 1;
+    transform: translateX(100%);
+    opacity: 1;
+  }
 
-.page__inner {
-  flex: 1;
+  .page__inner {
+    flex: 1;
 
-  >div {
     display: flex;
     flex-direction: column;
     min-height: 100%;
+    // >div {
+    // }
   }
+
+  &.page-enter-active {
+    position: absolute;
+    z-index: 1;
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  &.page-exit {
+    box-shadow: 0 0 5em 0 rgba(0, 0, 0, .5) inset;
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  &.page-exit-active {
+    box-shadow: 0 0 5em 0 rgba(0, 0, 0, .5) inset;
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  &.page--prev.page-enter {
+    position: absolute;
+    z-index: 1;
+    transform: translateX(0);
+    opacity: 0;
+  }
+
+  &.page--prev.page-enter-active {
+    position: absolute;
+    z-index: 1;
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  &.page--prev.page-exit {
+    position: relative;
+    z-index: 2;
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  &.page-exit .page__inner {
+    position: relative;
+    z-index: 2;
+    opacity: 1;
+    transition: transform 500ms ease-in-out, opacity 500ms ease-in-out;
+  }
+
 }
 
-.page-enter-active {
-  position: absolute;
-  z-index: 1;
-  transform: translateX(0);
-}
-
-.page-exit {
-  box-shadow: 0 0 5em 0 rgba(0, 0, 0, .5) inset;
-  transform: translateX(100%);
-}
-
-.page--prev.page-enter {
-  position: absolute;
-  z-index: 1;
-  transform: translateX(0);
-}
-
-.page--prev.page-enter-active {
-  position: absolute;
-  z-index: 1;
-  transform: translateX(0);
-}
-
-.page--prev.page-exit {
-  position: relative;
-  z-index: 2;
-  transform: translateX(100%);
-}
-
-.page-exit .page__inner {
-  position: relative;
-  z-index: 2;
-  transition: transform 500ms ease-in-out, opacity 500ms ease-in-out;
-}

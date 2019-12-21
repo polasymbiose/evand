@@ -8,11 +8,11 @@ import './home.scss'
 import { Images } from '../GalleryComponent/GalleryComponent'
 var cn = require('classnames')
 
-const Home = ({ data }: any) => {
+const Home = ({ data, init, setinit }: {data: any, init: boolean, setinit: (val: boolean) => void}) => {
   const [index, setindex] = useState(0)
   const imgAr: Images[] = get(data, ['home', 'slider'], [])
   const counter = useRef(0)
-  const [loading, setloading] = useState(true)
+  const loading = !init
   const mounted = useIsMounted()
   const autoplay = () => {
     mounted &&
@@ -28,7 +28,7 @@ const Home = ({ data }: any) => {
     counter.current += 1
     counter.current >= imgAr.length &&
       setTimeout(() => {
-        setloading(false)
+        setinit(true)
         counter.current = 0
       }, 500)
   }
