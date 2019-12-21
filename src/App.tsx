@@ -67,8 +67,8 @@ const App = () => {
                       key={foo[1]}
                       classNames="page"
                       timeout={{
-                        enter: 700,
-                        exit: 700
+                        enter: 500,
+                        exit: 500
                       }}
                     >
                       <Route
