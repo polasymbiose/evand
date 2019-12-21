@@ -1,63 +1,30 @@
-import React, { useState, useEffect } from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import './app.scss'
-import Footer from './components/Footer/Footer'
-import Impressum from './components/Impressum/Impressum'
 import Datenschutz from './components/Datenschutz/Datenschutz'
+import Footer from './components/Footer/Footer'
 import GalleryComponent from './components/GalleryComponent/GalleryComponent'
 import Header from './components/Header/Header'
 import Home from './components/Home/Home'
+import Impressum from './components/Impressum/Impressum'
 import KontaktScreen from './components/KontaktScreen/KontaktScreen'
 import Menu from './components/Menu/Menu'
 import Page from './components/Page/Page'
+import './components/Page/page-transition.scss'
 
-const Index = () => {
+const Wrapper: FunctionComponent<any> = ({ children }) => {
   return (
     <Page>
-      <Home />
+      {children}
       <Footer />
     </Page>
   )
-}
-
-const GalleryScreen = () => {
-  return (
-    <Page>
-      <GalleryComponent />
-      <Footer />
-    </Page>
-  )
-}
-
-const Kontakt = () => (
-  <Page>
-    <KontaktScreen />
-    <Footer />
-    </Page>
-)
-
-const ImpressumScreen = () => {
-  return (
-    <Page>
-      <Impressum />
-      <Footer />
-    </Page>
-  )
-}
-
-const DatenschutzScreen = () => {
-  return (
-    <Page>
-      <Datenschutz />
-      <Footer />
-    </Page>
-  )
-
 }
 
 const App = () => {
   const [openMenu, setOpenMenu] = useState(false)
+  const [data, setdata] = useState({})
 
   const toggle = () => {
     setOpenMenu(!openMenu)
@@ -68,47 +35,92 @@ const App = () => {
     return () => {
       document.body.classList.remove('noscroll')
     }
-  }, [openMenu]);
+  }, [openMenu])
+
+  useEffect(() => {
+    fetch(`${process.env.PUBLIC_URL}/img.json`)
+      .then(async res => {
+        const r = await res.json()
+        setdata(r)
+      })
+      .catch()
+  }, [])
 
   return (
     <HashRouter>
       <div className="app">
         <div className="body">
-        <Header toggle={toggle} open={openMenu} />
+          <Header toggle={toggle} open={openMenu} />
           <Menu open={openMenu} toggle={toggle} />
-            <div className="pages">
-              <Route
-                render={({ location }) => {
-                  const { pathname } = location
-                  const foo = pathname.split('/')
-                  return (
-                    <TransitionGroup>
-                      <CSSTransition
-                        key={foo[1]}
-                        classNames="page"
-                        timeout={{
-                          enter: 500,
-                          exit: 500
-                        }}
-                      >
-                        <Route
-                          location={location}
-                          render={() => (
-                            <Switch>
-                              <Route exact path="/" component={Index} />
-                              <Route path="/gallery" component={GalleryScreen} />
-                              <Route path="/kontakt" component={Kontakt} />
-                              <Route path="/impressum" component={ImpressumScreen} />
-                              <Route path="/datenschutz" component={DatenschutzScreen} />
-                            </Switch>
-                          )}
-                        />
-                      </CSSTransition>
-                    </TransitionGroup>
-                  )
-                }}
-              />
-            </div>
+          <div className="pages">
+            <Route
+              render={({ location }) => {
+                const { pathname } = location
+                const foo = pathname.split('/')
+                return (
+                  <TransitionGroup>
+                    <CSSTransition
+                      key={foo[1]}
+                      classNames="page"
+                      timeout={{
+                        enter: 500,
+                        exit: 500
+                      }}
+                    >
+                      <Route
+                        location={location}
+                        render={() => (
+                          <Switch>
+                            <Route
+                              exact
+                              path="/"
+                              render={props => (
+                                <Wrapper>
+                                  <Home {...props} data={data} />
+                                </Wrapper>
+                              )}
+                            />
+                            <Route
+                              path="/gallery"
+                              render={props => (
+                                <Wrapper>
+                                  <GalleryComponent {...props} data={data} />
+                                </Wrapper>
+                              )}
+                            />
+                            <Route
+                              path="/kontakt"
+                              render={() => (
+                                <Wrapper>
+                                  <KontaktScreen />
+                                </Wrapper>
+                              )}
+                            />
+                            <Route
+                              path="/impressum"
+                              render={() => (
+                                <Wrapper>
+                                  <Impressum />
+                                </Wrapper>
+                              )}
+                            />
+                            <Route
+                              path="/datenschutz"
+                              render={() => (
+                                <Wrapper>
+                                  <Datenschutz />
+                                </Wrapper>
+                              )}
+                            />
+                          </Switch>
+                        )}
+                      />
+                    </CSSTransition>
+                  </TransitionGroup>
+                )
+              }}
+            />
+          </div>
         </div>
       </div>
     </HashRouter>

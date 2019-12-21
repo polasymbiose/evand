@@ -3,7 +3,6 @@ import FullGallery from '../FullGallery/FullGallery'
 import GalleryFilter from '../GalleryFilter/GalleryFilter'
 import Page from '../Page/Page'
 import WideScreenGallery from '../WideScreenGallery/WideScreenGallery'
-import '../Page/page-transition.scss'
 import './GalleryComponent.scss'
 
 export interface Images {
@@ -13,7 +12,7 @@ export interface Images {
   factor: number
 }
 
-const GalleryComponent = () => {
+const GalleryComponent = ({data}: {data: any}) => {
   const [gallery, setgallery] = useState()
   const allImgs = useRef<Images[]>([])
   const [imageFilter, setImageFilter] = useState<Images[]>([])

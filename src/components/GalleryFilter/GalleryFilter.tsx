@@ -12,7 +12,7 @@ interface GalleryFilterProps {
 const GalleryFilter = ({ checkbox, handleChange, gallery }: GalleryFilterProps) => {
   const bp = useMedia(['(min-width: 750px)'], [true], false)
   return (
-    <div className="galleryWrapper">
+
       <div className="galleryFilter">
         {gallery && (
           <ul
@@ -36,7 +36,7 @@ const GalleryFilter = ({ checkbox, handleChange, gallery }: GalleryFilterProps) 
                       onChange={handleChange}
                     />
                     <label className={cx} />
-                    <span className="toggle__text">{key}</span>
+                    <span>{key}</span>
                   </div>
                 </li>
               )
@@ -44,7 +44,7 @@ const GalleryFilter = ({ checkbox, handleChange, gallery }: GalleryFilterProps) 
           </ul>
         )}
       </div>
-    </div>
+
   )
 }
 export default GalleryFilter

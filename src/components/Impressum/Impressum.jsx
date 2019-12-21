@@ -1,5 +1,4 @@
 import React from 'react';
-import '../Page/page-transition.scss';
 import './impressum.scss';
 
 const Impressum = () => {

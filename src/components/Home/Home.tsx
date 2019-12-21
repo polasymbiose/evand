@@ -2,53 +2,35 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { get } from 'lodash'
 import Loader from '../Loader/Loader'
-import { BehaviorSubject } from 'rxjs'
-import '../Page/page-transition.scss'
+import useIsMounted from '../../hooks/useIsMounted'
+import useInterval from '../../hooks/useInterval'
 import './home.scss'
-var classNames = require('classnames')
+import { Images } from '../GalleryComponent/GalleryComponent'
+var cn = require('classnames')
 
-export const jsonObservable = new BehaviorSubject()
-
-const Home = () => {
-  const [index, set] = useState(0)
-  const [json, setjson] = useState({})
-  const imgAr = get(json, ['home', 'slider'], [])
-  const isMounted = useRef(false)
+const Home = ({ data }: any) => {
+  const [index, setindex] = useState(0)
+  const imgAr: Images[] = get(data, ['home', 'slider'], [])
   const counter = useRef(0)
   const [loading, setloading] = useState(true)
-
+  const mounted = useIsMounted()
+  const autoplay = () => {
+    mounted &&
+    imgAr.length > 0 &&
+    setindex(i => (i + 1) % imgAr.length)
+  }
+  const stopAutoplay = useInterval(autoplay, 6000, [mounted, data])
   useEffect(() => {
-    isMounted.current = true
-    fetch(`${process.env.PUBLIC_URL}/img.json`)
-      .then(async res => {
-        const r = await res.json()
-        jsonObservable.next({ r })
-        isMounted.current && setjson(r)
-      })
-      .catch()
-    return () => {
-      isMounted.current = false
-    }
-  }, [])
-
-  useEffect(() => {
-    const autoplay = void setInterval(() => {
-      isMounted.current && imgAr.length > 0 && set(state => (state + 1) % imgAr.length)
-    }, 6000)
-
-    return () => {
-      clearInterval(autoplay)
-    }
-  }, [json])
+    return () => stopAutoplay()
+  }, [data])
 
   const handleOnLoad = () => {
     counter.current += 1
-    if (counter.current >= imgAr.length) {
+    counter.current >= imgAr.length &&
       setTimeout(() => {
         setloading(false)
         counter.current = 0
-      }, 1000)
-    }
+      }, 500)
   }
 
   return (
@@ -57,8 +39,13 @@ const Home = () => {
       {!loading && (
         <div className="bgWrapper">
           {imgAr.map((item, i) => {
-            const imageClassNames = classNames('bg', { visible: index === i })
-            return <div key={item.src} className={imageClassNames} style={{ backgroundImage: `url(${item.src})` }} />
+            return (
+              <div
+                key={item.src}
+                className={cn('bg', { visible: index === i })}
+                style={{ backgroundImage: `url(${item.src})` }}
+              />
+            )
           })}
         </div>
       )}
@@ -73,7 +60,7 @@ const Home = () => {
             <p>
               {'In der '}
               <Link to="/gallery/">
-                <span>Gallerie</span>
+                <span>Galerie</span>
               </Link>
               {' findet ihr meine schönsten Arbeiten aus 2019. Ich bin gespannt was 2020 bereit hält. Seid ihr dabei?'}
               <br /> {'Dann würde ich mich freuen wenn wir einen Teil des Weges gemeinsam gehen. '}
