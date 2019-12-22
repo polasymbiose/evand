@@ -32,14 +32,13 @@ const App = () => {
     setOpenMenu(!openMenu)
   }
 
-
   useEffect(() => {
     fetch(`${process.env.PUBLIC_URL}/img.json`)
       .then(async res => {
         const r = await res.json()
         setdata(r)
       })
-      .catch()
+      .catch(e => console.log('error fetching:', e))
   }, [])
 
   return (
