@@ -27,13 +27,6 @@ export default function FullGallery({ imgs }) {
   })
   useBodyClass('noscroll', isOpen)
 
-  // useEffect(() => {
-  //   isOpen ? document.body.classList.add('noscroll') : document.body.classList.remove('noscroll')
-  //   return () => {
-  //     document.body.classList.remove('noscroll')
-  //   }
-  // })
-
   const handleClose = () => {
     history.push('/gallery')
   }
