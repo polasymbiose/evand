@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Burger from '../Burger/Burger'
 import { animated, config, useSpring, useTrail } from 'react-spring'
 import './menu.scss'
-const classNames = require('classnames')
+const cn = require('classnames')
 
 const list = [<Link to="/">Home</Link>, <Link to="/gallery/">Gallery</Link>, <Link to="/kontakt/">Kontakt</Link>]
 
@@ -13,14 +13,11 @@ const Menu = props => {
     from: { backgroundColor: 'rgba(0,0,0,0)' },
     config: config.gentle
   }))
-  const cx = classNames({
-    open: props.open
-  })
 
   useEffect(() => {
     set({
-      to: { backgroundColor: props.open ? 'rgba(0,0,0,0.9)' : 'rgba(0,0,0,0)' },
-      from: { backgroundColor: props.open ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0.9)' }
+      to: { backgroundColor: props.open ? 'rgba(0,0,0,0.7)' : 'rgba(0,0,0,0)' },
+      from: { backgroundColor: props.open ? 'rgba(0,0,0,0)' : 'rgba(0,0,0,0.7)' }
     })
   }, [props.open, set])
 
@@ -29,16 +26,20 @@ const Menu = props => {
     opacity: props.open ? 1 : 0,
     x: props.open ? 0 : -100,
     marginLeft: props.open ? 0 : -100,
-    // height: props.open ? 60 : 0,
     left: !props.open ? -60 : 0,
     from: { opacity: 0, x: 20, height: 0 }
   })
 
   return (
     <>
-      <animated.nav style={spring} className={cx}>
+      <animated.nav
+        style={spring}
+        className={cn({
+          open: props.open
+        })}
+      >
         <div
-          className={classNames({
+          className={cn({
             menuburger: true,
             active: props.open
           })}

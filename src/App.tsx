@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import './app.scss'
@@ -11,7 +11,6 @@ import Impressum from './components/Impressum/Impressum'
 import KontaktScreen from './components/KontaktScreen/KontaktScreen'
 import Menu from './components/Menu/Menu'
 import Page from './components/Page/Page'
-const cn = require('classnames')
 
 const Wrapper: FunctionComponent<any> = ({ children }) => {
   return (
@@ -56,15 +55,14 @@ const App = () => {
           <Route
             render={({ location }) => {
               const { pathname } = location
-              const foo = pathname.split('/')
-              console.log('foo :', foo);
+              const lowerPath = pathname.split('/')
               return (
                 <div
                   className="pages"
                 >
                   <TransitionGroup>
                     <CSSTransition
-                      key={foo[1]}
+                      key={lowerPath[1]}
                       classNames="page"
                       timeout={{
                         enter: 500,
