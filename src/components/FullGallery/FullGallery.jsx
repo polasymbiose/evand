@@ -6,6 +6,7 @@ import { animated, useSpring } from 'react-spring'
 import useImage from 'use-image'
 import Burger from '../Burger/Burger'
 import Loader from '../Loader/Loader'
+import useBodyClass from '../../hooks/useBodyClass'
 import './FullGallery.scss'
 import AliceCarousel from 'react-alice-carousel'
 import 'react-alice-carousel/lib/alice-carousel.css'
@@ -24,13 +25,14 @@ export default function FullGallery({ imgs }) {
   const findIndex = imgs.findIndex(el => {
     return el.src.includes(imgPath)
   })
+  useBodyClass('noscroll', isOpen)
 
-  useEffect(() => {
-    isOpen ? document.body.classList.add('noscroll') : document.body.classList.remove('noscroll')
-    return () => {
-      document.body.classList.remove('noscroll')
-    }
-  })
+  // useEffect(() => {
+  //   isOpen ? document.body.classList.add('noscroll') : document.body.classList.remove('noscroll')
+  //   return () => {
+  //     document.body.classList.remove('noscroll')
+  //   }
+  // })
 
   const handleClose = () => {
     history.push('/gallery')
@@ -61,6 +63,7 @@ export default function FullGallery({ imgs }) {
         <AliceCarousel
           ref={sliderRef}
           infinite
+          buttonsDisabled
           startIndex={findIndex}
           dotsDisabled={true}
           autoHeight

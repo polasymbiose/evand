@@ -11,6 +11,7 @@ import Impressum from './components/Impressum/Impressum'
 import KontaktScreen from './components/KontaktScreen/KontaktScreen'
 import Menu from './components/Menu/Menu'
 import Page from './components/Page/Page'
+import useBodyClass from './hooks/useBodyClass'
 
 const Wrapper: FunctionComponent<any> = ({ children }) => {
   return (
@@ -25,17 +26,12 @@ const App = () => {
   const [openMenu, setOpenMenu] = useState(false)
   const [data, setdata] = useState({})
   const [init, setinit] = useState(false)
+  useBodyClass('noscroll', openMenu)
 
   const toggle = () => {
     setOpenMenu(!openMenu)
   }
 
-  useEffect(() => {
-    openMenu ? document.body.classList.add('noscroll') : document.body.classList.remove('noscroll')
-    return () => {
-      document.body.classList.remove('noscroll')
-    }
-  }, [openMenu])
 
   useEffect(() => {
     fetch(`${process.env.PUBLIC_URL}/img.json`)

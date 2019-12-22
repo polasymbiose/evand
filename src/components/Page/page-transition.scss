@@ -37,7 +37,6 @@
   }
 
   &.page-enter-done {
-    transform: perspective(1000px) rotateY(0deg) translateX(0) scale(1);
     opacity: 1;
   }
 
